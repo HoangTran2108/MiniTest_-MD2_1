@@ -44,18 +44,24 @@ public class Main {
     }
 
     public static Client addNewClient() {
-        System.out.println("Nhập tên khách hàng muốn thêm:");
-        String name = input.nextLine();
-        System.out.println("Nhập Ngày sinh:");
-        String dateOfBirth = input.nextLine();
-        System.out.println("Nhập số CMND:");
-        String idNumber = input.nextLine();
-        System.out.println("Nhập số ngày thuê:");
-        int numberOfDays = Integer.parseInt(input.nextLine());
-        System.out.println("Nhập loại phòng thuê:");
-        String typeOfRoom = input.nextLine();
-        System.out.println("Nhập giá phòng:");
-        double price = Integer.parseInt(input.nextLine());
-        return new Hotel(name, dateOfBirth, idNumber, numberOfDays, typeOfRoom, price);
+        try {
+            System.out.println("Nhập tên khách hàng muốn thêm:");
+            String name = input.nextLine();
+            System.out.println("Nhập Ngày sinh:");
+            String dateOfBirth = input.nextLine();
+            System.out.println("Nhập số CMND:");
+            String idNumber = input.nextLine();
+            System.out.println("Nhập số ngày thuê:");
+            int numberOfDays = Integer.parseInt(input.nextLine());
+            System.out.println("Nhập loại phòng thuê:");
+            String typeOfRoom = input.nextLine();
+            System.out.println("Nhập giá phòng:");
+            double price = Integer.parseInt(input.nextLine());
+            return new Hotel(name, dateOfBirth, idNumber, numberOfDays, typeOfRoom, price);
+        }
+        catch (Exception e) {
+            System.out.println(e.getMessage());;
+        }
+        return null;
     }
 }

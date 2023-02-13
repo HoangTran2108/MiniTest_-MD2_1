@@ -2,7 +2,10 @@ package controller;
 
 import Model.Client;
 import Model.Hotel;
+import storage.ReadWriteFile;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -20,26 +23,22 @@ public class HotelManager {
 
     public void addClient(Client client) {
         clients.add(client);
-    }
-
-    public void display() {
-        for (Client client : clients) {
-            System.out.println(client);
-        }
+        ReadWriteFile.writeToFile(clients);
     }
 
     Scanner input = new Scanner(System.in);
 
-    public void removeClient() {
+    public List<Client> removeClient() {
         System.out.print("Nhập số CMND khách hàng muốn xóa: ");
         String id = input.nextLine();
         for (Client client : clients) {
             if (id.equals(client.getIdNumber())) {
                 clients.remove(client);
+                return clients;
             } else {
                 System.out.println("Số CMND không đúng");
             }
-        }
+        } return null;
     }
 
     public void moneyToPay() {
